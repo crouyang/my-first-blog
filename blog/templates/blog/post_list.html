@@ -1,31 +1,14 @@
+{% extends 'blog/base.html' %}
 
-<html>
-	<head>
-		<title>Chewie's and Gibb's blog</title>
-	</head>
-	<body>
-		<!-- BODY TITLE -->
-		<div>
-			<h1>Chewie and Gibbs </h1>
-		</div>
-		
-		<!-- IMAGES -->
-		<div>
-			<blockquote class="imgur-embed-pub" lang="en" data-id="KXGrzxz"><a href="//imgur.com/KXGrzxz">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-		</div>
-		
-		<!-- LINK TO BLOGS -->
-		<div>
-		<h1> Some Thoughts </h1>
-			{% for post in posts %}
-			<div>
-				<p>Published: {{ post.published_date }}</p>
-				<h2><a href="">{{ post.title }} </a></h2>
-				<p>{{ post.text |linebreaks }} </p>
+{% block content%}
+	{% for post in posts %}
+		<div class="post">
+			<div class="date">
+				<p>published: {{ post.published_date }}</p>
 			</div>
-			{% endfor %}
-		
+			<h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title.lower }}</a></h1>
+			<p>{{ post.text|linebreaks }}</p>
 		</div>
 		
-	</body>
-</html>
+	{% endfor %}
+{% endblock %}
