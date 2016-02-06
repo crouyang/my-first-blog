@@ -16,9 +16,14 @@
 		
 		<!-- LINK TO BLOGS -->
 		<div>
-			<p> published: 2/3/2016 </p>
-			<h2><a href="">THE FIRST POST </a></h2>
-			<p> The most important things
+		<h1> Some Thoughts </h1>
+			{% for post in posts %}
+			<div>
+				<p>Published: {{ post.published_date }}</p>
+				<h2><a href="">{{ post.title }} </a></h2>
+				<p>{{ post.text |linebreaks }} </p>
+			</div>
+			{% endfor %}
 		
 		</div>
 		
